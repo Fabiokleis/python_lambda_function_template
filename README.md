@@ -24,7 +24,7 @@ def lambda_handler(event, context):
 # Docker image
 used image [public.ecr.aws/lambda/python:3.9](https://hub.docker.com/layers/amazon/aws-lambda-python/3.9/images/sha256-6ec0519235e064dc4bd53eda7481d76800ee1455e88c801062d5407026cee427?context=explore)
 
-### Build imagem
+### Build image
 ```console
 docker build . -t lambda-function
 ```
@@ -33,14 +33,16 @@ docker build . -t lambda-function
 docker run --name python-lambda -d -p 9000:8080 lambda-function
 ```
 # Testing
-### invoke lambda function
+### Invoke lambda function
 ```console
 curl -s -XPOST "http://localhost:9000/2015-03-31/functions/function/invocations" -d '{}' | jq
 ```
 
 # Makefile 
+```make
 all: build up test
 .PHONY: all
+```
 
 ### Build image
 ```console
